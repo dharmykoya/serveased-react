@@ -2,11 +2,10 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
-import Product from './Product'
-import Cart from './Cart'
+import Product from './views/Product'
+import Cart from './views/Cart'
 
 
 function App() {

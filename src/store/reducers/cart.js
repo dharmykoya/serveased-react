@@ -1,29 +1,29 @@
-import { ADD_PRODUCT } from "../actionTypes";
+import { UPDATE_CART } from "../actionTypes";
 
 const initialState = {
-//   allIds: [],
-//     byIds: {},
-  cart: []
+  cart: [],
+  totalPrice: 0
 };
 
-export default function(state = initialState, action) {
+const sumProduct = items => {
+  return items.reduce((acc, current) => {
+    return current.price * current.count + acc;
+  }, 0);
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_PRODUCT: {
-      const { product } = action.payload;
+    case UPDATE_CART: {
+      const { cart } = action;
       return {
         ...state,
-        // allIds: [...state.allIds, id],
-        // byIds: {
-        //   ...state.byIds,
-        //   [id]: {
-        //     content,
-        //     completed: false
-        //   }
-        // }
-        cart: [...state.cart, product]
+        cart: [...cart],
+        totalPrice: sumProduct(cart)
       };
     }
     default:
       return state;
   }
-}
+};
+
+export default reducer;
