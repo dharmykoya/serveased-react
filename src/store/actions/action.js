@@ -1,11 +1,8 @@
-export const eventCreateStart = () => {
-  return {
-    type: CREATE_EVENT_START,
-  };
-};
-
-export const addToCart = (eventDetails, image) => {
+export const updateCart = (cart) => {
   return async (dispatch) => {
-    
+    return dispatch({
+      type: "UPDATE_CART",
+      cart: cart
+    })
   };
 };
